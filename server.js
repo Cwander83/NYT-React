@@ -6,7 +6,7 @@ var logger = require("morgan");
 const PORT = process.env.PORT || 3001;
 
 // Require all models
-const models = require("./models");
+const db = require("./models");
 
 // Configure body parser for AJAX requests
 app.use(express.urlencoded({ extended: true }));
@@ -17,7 +17,9 @@ app.use(express.static("client/build"));
 
 
 // Add routes, both API and view
-app.use('/',routes);
+// Require our routes
+const routes = require("./routes");
+app.use(routes);
 
 
 // Set up promises with mongoose
