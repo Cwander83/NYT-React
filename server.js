@@ -19,6 +19,7 @@ app.use(express.static("client/build"));
 
 
 // Add routes, both API and view
+const routes = require("./routes");
 app.use(routes);
 
 

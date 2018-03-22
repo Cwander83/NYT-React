@@ -1,8 +1,9 @@
+const path = require("path");
 const router = require("express").Router();
-const articleRoutes = require("./API");
+const articleRoute = require("./API");
 
 
-router.use("/api", articleRoutes);
+router.use("/api", articleRoute);
 
 router.use(function (req, res) {
     res.sendFile(path.join(__dirname, "../client/build/index.html"));
