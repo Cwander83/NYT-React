@@ -2,8 +2,8 @@
 
 import axios from "axios";
 
-  const key = "8ee90c8c8c81400590742aeb69073295";
-  const url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+const key = "8ee90c8c8c81400590742aeb69073295";
+const url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 
 
 export default {
@@ -14,5 +14,5 @@ export default {
                 console.log(res);
             });
     },
-    
+
 }
