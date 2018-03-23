@@ -1,43 +1,44 @@
 const db = require("../models");
 
-
 module.exports = {
-    findAll: function (req, res) {
+    // this method handles finding all articles in the db
+    find: function (req, res) {
+        console.log("Gathering saved articles from the db");
         db.Article
-            .find(req.query)
-            .sort({
-                date: -1
+            .find()
+            .then(function (doc) {
+                res.json(doc);
             })
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .catch(function (err) {
+                res.json(err);
+            });
     },
-    findbyId: function (req, res) {
-        db.Article
-            .find(req.params.id)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-    },
+    // this method handles adding new articles to the db
     create: function (req, res) {
-        db.Article
+    
+       db.Article
             .create(req.body)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .then(function (doc) {
+                res.json(doc);
+                console.log("doc: ", doc);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
     },
-    update: function (req, res) {
-        db.Article
-            .findOneAndUpdate({
-                _id: req.params.id
-            }, req.body)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-    },
+    // this method handles deleting articles from the db
     remove: function (req, res) {
+        console.log("Deleting a saved article from the db");
         db.Article
-            .findById({
+            .remove({
                 _id: req.params.id
             })
-            .then(dbModel => dbModel.remove())
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .then(function (doc) {
+                res.json(doc);
+                console.log("doc: ", doc);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
     }
 };

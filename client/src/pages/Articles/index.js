@@ -4,6 +4,7 @@ import {Row, Container} from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import SearchBox from "../SearchBox";
 import ResultBox from "../ResultsBox";
+import SavedBox from "../SavedBox";
 
 class Articles extends Component {
     state = {
@@ -19,8 +20,8 @@ class Articles extends Component {
     }
     loadAllArticles = () => {
         API
-            .getArticles()
-            .then(res => this.setState({articles: res.data}))
+            .getArticle()
+            .then(res => this.setState({saved: res.data}))
             .catch(err => console.log(err));
     };
 
@@ -60,7 +61,7 @@ class Articles extends Component {
         };
         API
             .saveArticle(newSave)
-            .then(this.getSavedArticles());
+            .then(this.loadAllArticles());
     }
 
     renderArticles = () => {
@@ -74,7 +75,21 @@ class Articles extends Component {
                 date={article.pub_date}
                 url={article.web_url}
                 handleSaveButton={this.handleSaveButton}
-                getSavedArticles={this.getSavedArticles}/>));
+                loadAllArticles={this.loadAllArticles}/>));
+    }
+
+    renderSaved = () => {
+        return this
+            .state
+            .saved
+            .map(save => (<SavedBox
+                _id={save._id}
+                key={save._id}
+                title={save.title}
+                date={save.date}
+                url={save.url}
+                handleDeleteButton={this.handleDeleteButton}
+                loadAllArticles={this.loadAllArticles}/>));
     }
 
     render() {
@@ -87,12 +102,32 @@ class Articles extends Component {
                             handleStartYearChange={this.handleStartYearChange}
                             handleEndYearChange={this.handleEndYearChange}
                             handleFormSubmit={this.handleFormSubmit}
-                            renderArticles={this.renderArticles} />
-                        
+                            renderArticles={this.renderArticles}/>
+
                     </Jumbotron>
                 </Row>
+
                 <Row>
-                
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-12">
+                                <div className="panel panel-muted">
+                                    <div className="panel-heading">
+                                        <h3 className="panel-title">
+                                            <strong>
+                                                <i className="fa fa-download" aria-hidden="true"></i>
+                                                Saved Articles</strong>
+                                        </h3>
+                                    </div>
+                                    <div className="panel-body">
+                                        <ul className="list-group">
+                                            {this.renderSaved()}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </Row>
             </Container>
         )

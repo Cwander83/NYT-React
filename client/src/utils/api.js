@@ -13,15 +13,15 @@ const api = {
             
     },
 
-    getArticle: function (id) {
-        return axios.get("/api/article");
+    getArticle: function () {
+        return axios.get("/api/saved");
     },
 
     deleteArticle: function (id) {
-        return axios.delete("/api/article/" + id);
+        return axios.delete("/api/saved/" + id);
     },
     saveArticle: function (data) {
-        return axios.post("/api/article", data);
+        return axios.post("/api/saved", data);
 
     }
 };

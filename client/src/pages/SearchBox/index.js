@@ -44,7 +44,7 @@ const SearchBox = props =>
            </h3>
          </div>
          <div className="panel-body">
-           {props.renderArticles()}
+         {props.renderArticles()}
          </div>
        </div>
      </div>
