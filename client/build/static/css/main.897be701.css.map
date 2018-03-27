@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/Nav/style.css"],"names":[],"mappings":"AAAA,QACI,iBAAmB,CAIvB,GACI,yBAA2B","file":"static/css/main.897be701.css","sourcesContent":[".header {\r\n    text-align: center;\r\n}\r\n\r\n\r\nh1 {\r\n    text-decoration: underline;\r\n}\r\n\r\n\r\n\n\n\n// WEBPACK FOOTER //\n// ./src/components/Nav/style.css"],"sourceRoot":""}
