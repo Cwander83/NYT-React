@@ -6,10 +6,10 @@ The New York Time Scraper (NYT Scraper for short) is a scraper app which capture
 
 ### Technologies Used:
 
-MongoDB
-Express
-Node.js
-React
-Axios
-Mongoose
+*MongoDB
+*Express
+*Node.js
+*React
+*Axios
+*Mongoose
 
