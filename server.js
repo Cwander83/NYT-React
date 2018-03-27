@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const app = express();
-var logger = require("morgan");
+const logger = require("morgan");
 const PORT = process.env.PORT || 3001;
 
 // Require all models

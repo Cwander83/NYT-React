@@ -1,7 +1,8 @@
 import React from "react";
+import { Container, Row } from "../../components/Grid";
 
 const SearchBox = props =>
-<div className="container"> 
+<Container fluid> 
    <form>
     <div className="form-group">
         <label htmlFor="topic">Topic</label>
@@ -33,7 +34,7 @@ const SearchBox = props =>
         type="submit"
         className="btn btn-success pull-right">Submit</button>
 </form>
-     <div className="row">
+     <Row>
      <div className="col-lg-12">
        <div className="panel panel-primary">
          <div className="panel-heading">
@@ -48,8 +49,8 @@ const SearchBox = props =>
          </div>
        </div>
      </div>
-        </div>
-   </div>     
+        </Row>
+   </Container>     
     
     
     
